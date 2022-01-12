@@ -3,11 +3,10 @@ const expect = require('expect')
 const browser = await playwright.chromium.launch()
 const page = await browser.newPage()
 await page.goto('https://fr.bam-karaokebox.com/')
-(async () => {
-  const url = await page.$eval('.header__brand', (el) => el.src);
-  const response = await axios.get(url);
-  fs.writeFileSync("scraped-image.svg", response.data); 
-})();
-const name = await page.$eval('.header__book-cta--v2', el => el.textContent.trim());
-expect(name).toEqual('Réserver');
+const elt1 = await page.$("//*[@class='header__brand']");
+console.log(await elt1?.isVisible());
+const elt2 = await page.$("//*[@class='carousel carousel--left carousel--slidable]");
+console.log(await elt2?.isVisible());
+const elt3 = await page.$("//*[@class='header__book-cta--v2']");
+console.log(await elt3?.isVisible());
 await browser.close()
