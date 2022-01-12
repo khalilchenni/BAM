@@ -1,0 +1,17 @@
+const playwright = require('playwright')
+const expect = require('expect')
+const browser = await playwright.chromium.launch()
+const page = await browser.newPage()
+await page.goto('https://fr.bam-karaokebox.com/')
+await page.click('.header__burger');
+const elt1 = await page.$("//*[@class='u-txt-uppercase']");
+console.log(await elt1?.isVisible());
+const elt2 = await page.$("//*[@class='content__item__city']");
+console.log(await elt2?.isVisible());
+const elt3 = await page.$("//*[@class='content__item__city']");
+console.log(await elt3?.isVisible());
+await page.click('.u-txt-uppercase');
+const {page}=this.helpers.Playwright;
+const url=await page.url();
+expect(url).toEqual('https://fr.bam-karaokebox.com/ville/paris')
+await browser.close()
