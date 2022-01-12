@@ -5,7 +5,7 @@ const page = await browser.newPage()
 await page.goto('https://fr.bam-karaokebox.com/')
 const elt1 = await page.$("//*[@class='header__brand']");
 console.log(await elt1?.isVisible());
-const elt2 = await page.$("//*[@class='carousel carousel--left carousel--slidable]");
+const elt2 = await page.$("//*[@class='carousel carousel--left carousel--slidable']");
 console.log(await elt2?.isVisible());
 const elt3 = await page.$("//*[@class='header__book-cta--v2']");
 console.log(await elt3?.isVisible());
